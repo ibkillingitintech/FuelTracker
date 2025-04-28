@@ -9,13 +9,29 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack{
+            Form{
+                Section{
+                    Button(action: {
+                        // Action to log a new entry (later)
+                    }) {
+                        Text("Log New Entry")
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                    }
+                }
+                Section(header: Text("Energy Level")){
+                    // Pciker/slider will go here
+                }
+                Section(header: Text("Water Intake (oz)")){
+                    // text feild goes here
+                }
+                Section(header: Text("Notes")){
+                   // Text editor goes here
+                }
+            }
+            .navigationTitle(" Daily Fuel Tracker")
         }
-        .padding()
     }
 }
 
