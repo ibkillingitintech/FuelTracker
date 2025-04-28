@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var energyLevel: Int = 3
+    @State private var wanterIntake: String = ""
+    @State private var notes: String = ""
+    
+    
     var body: some View {
         NavigationStack{
             Form{
@@ -21,13 +26,21 @@ struct ContentView: View {
                     }
                 }
                 Section(header: Text("Energy Level")){
-                    // Pciker/slider will go here
+                    Picker("Energy Level", selection: $energyLevel){
+                        ForEach(1...5, id: \.self){
+                            level in
+                            Text("\(level)")
+                        }
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
                 }
                 Section(header: Text("Water Intake (oz)")){
-                    // text feild goes here
+                    TextField("Enter amount", text: $wanterIntake)
+                        .keyboardType(.numberPad)
                 }
                 Section(header: Text("Notes")){
-                   // Text editor goes here
+                    TextEditor(text: $notes)
+                        .frame(height: 100)
                 }
             }
             .navigationTitle(" Daily Fuel Tracker")
